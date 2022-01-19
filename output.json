@@ -1,0 +1,442 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 14,
+    "passes": 12,
+    "pending": 0,
+    "failures": 2,
+    "start": "2022-01-19T17:10:08.791Z",
+    "end": "2022-01-19T17:28:08.167Z",
+    "duration": 51566,
+    "testsRegistered": 14,
+    "passPercent": 85.71428571428571,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ddde6980-b8c5-4299-8ffc-c9470d989d2d",
+      "title": "",
+      "fullFile": "cypress/integration/rajat-test/AviyelQATask.js",
+      "file": "cypress/integration/rajat-test/AviyelQATask.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9f86111b-6e3b-451a-ba1d-ce740451e1ea",
+          "title": "UI Web page validation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Find all url in the web page and check if the links are valid and exists",
+              "fullTitle": "UI Web page validation Find all url in the web page and check if the links are valid and exists",
+              "timedOut": null,
+              "duration": 17539,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://uitestingplayground.com/home');\ncy.get('a').each(page => {\n  //Iterate through the page to find all hyperlinks.\n  cy.request(page.prop('href')).its('status').should('eq', 200); //Returns success if link is active, else returns failed.\n});",
+              "err": {},
+              "uuid": "09a946da-834a-4fec-aab7-35bdbe6e28c6",
+              "parentUUID": "9f86111b-6e3b-451a-ba1d-ce740451e1ea",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify web pages header meta tags for SEO",
+              "fullTitle": "UI Web page validation Verify web pages header meta tags for SEO",
+              "timedOut": null,
+              "duration": 4336,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('meta[name=\"description\"]') //Checks if there is an attribute called Description in Head tag\n.should(\"have.attr\", \"content\"); //Checks if there is an attribute called content in description. Expected: Failed execution.",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `meta[name=\"description\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `meta[name=\"description\"]`, but never found it.\n    at Context.eval (http://uitestingplayground.com/__cypress/tests?p=cypress/integration/rajat-test/AviyelQATask.js:111:6)",
+                "diff": null
+              },
+              "uuid": "17b41c0d-e07f-4017-b520-bf9c528591b2",
+              "parentUUID": "9f86111b-6e3b-451a-ba1d-ce740451e1ea",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "09a946da-834a-4fec-aab7-35bdbe6e28c6"
+          ],
+          "failures": [
+            "17b41c0d-e07f-4017-b520-bf9c528591b2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 21875,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "9033c10d-a035-465f-a9a4-cdda96517573",
+          "title": "API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify the booking API",
+              "fullTitle": "API Verify the booking API",
+              "timedOut": null,
+              "duration": 1395,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://restful-booker.herokuapp.com/booking').then(response => {\n  expect(response.status).equal(200);\n});",
+              "err": {},
+              "uuid": "7153ce01-7f77-486d-92d8-eda7ccf5dc48",
+              "parentUUID": "9033c10d-a035-465f-a9a4-cdda96517573",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - CREATE",
+              "fullTitle": "API validate CRUD operations - CREATE",
+              "timedOut": null,
+              "duration": 281,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://restful-booker.herokuapp.com/booking',\n  body: {\n    firstname: 'Rajat',\n    lastname: 'Devadiga',\n    totalprice: '200',\n    depositpaid: true,\n    bookingdates: {\n      checkin: \"2017-05-24\",\n      checkout: \"2019-07-30\"\n    }\n  }\n}).then(response => {\n  expect(response.status).equal(200);\n  id = response.body.bookingid;\n});",
+              "err": {},
+              "uuid": "5625b65d-1ed9-4401-8fa4-121b318bcaf6",
+              "parentUUID": "9033c10d-a035-465f-a9a4-cdda96517573",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - READ",
+              "fullTitle": "API validate CRUD operations - READ",
+              "timedOut": null,
+              "duration": 299,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"https://restful-booker.herokuapp.com/booking/\" + id).then(response => {\n  expect(response.status).equal(200);\n  expect(response.body).to.not.be.null;\n});",
+              "err": {},
+              "uuid": "6d3e5a6c-148a-4272-933f-8a2a5d5dc49f",
+              "parentUUID": "9033c10d-a035-465f-a9a4-cdda96517573",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - UPDATE",
+              "fullTitle": "API validate CRUD operations - UPDATE",
+              "timedOut": null,
+              "duration": 309,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'PUT',\n  url: \"https://restful-booker.herokuapp.com/booking/\" + id,\n  auth: {\n    username: \"admin\",\n    password: \"password123\"\n  },\n  body: {\n    \"firstname\": \"RajatTest\",\n    \"lastname\": \"Devadiga\",\n    \"totalprice\": '007',\n    \"depositpaid\": false,\n    \"bookingdates\": {\n      \"checkin\": \"2018-01-01\",\n      \"checkout\": \"2019-01-01\"\n    },\n    \"additionalneeds\": \"Breakfast\"\n  }\n}).then(response => {\n  expect(response.status).equal(200);\n  expect(response.body).to.be.not.null;\n  expect(response.body).to.have.property('firstname');\n});",
+              "err": {},
+              "uuid": "969f3e9f-13e6-4ae9-8c3c-ba09b3c24bb0",
+              "parentUUID": "9033c10d-a035-465f-a9a4-cdda96517573",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - DELETE",
+              "fullTitle": "API validate CRUD operations - DELETE",
+              "timedOut": null,
+              "duration": 283,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: \"https://restful-booker.herokuapp.com/booking/\" + id,\n  auth: {\n    username: \"admin\",\n    password: \"password123\"\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).equal(201);\n});",
+              "err": {},
+              "uuid": "ddb251ca-d0b5-485e-908e-7de8d730c82c",
+              "parentUUID": "9033c10d-a035-465f-a9a4-cdda96517573",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7153ce01-7f77-486d-92d8-eda7ccf5dc48",
+            "5625b65d-1ed9-4401-8fa4-121b318bcaf6",
+            "6d3e5a6c-148a-4272-933f-8a2a5d5dc49f",
+            "969f3e9f-13e6-4ae9-8c3c-ba09b3c24bb0",
+            "ddb251ca-d0b5-485e-908e-7de8d730c82c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2567,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "0b3b8f93-d1b1-4a41-8b17-e60f8539e2e9",
+      "title": "",
+      "fullFile": "cypress/integration/rajat-test/AviyelQATask.js",
+      "file": "cypress/integration/rajat-test/AviyelQATask.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "372b2449-6060-4aec-b4df-6c1abfd1b1e0",
+          "title": "UI Web page validation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Find all url in the web page and check if the links are valid and exists",
+              "fullTitle": "UI Web page validation Find all url in the web page and check if the links are valid and exists",
+              "timedOut": null,
+              "duration": 19810,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('http://uitestingplayground.com/home');\ncy.get('a').each(page => {\n  //Iterate through the page to find all hyperlinks.\n  cy.request(page.prop('href')).its('status').should('eq', 200); //Returns success if link is active, else returns failed.\n});",
+              "err": {},
+              "uuid": "92e425d6-a5d6-437c-bfa4-be4b9c0b0ca4",
+              "parentUUID": "372b2449-6060-4aec-b4df-6c1abfd1b1e0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verify web pages header meta tags for SEO",
+              "fullTitle": "UI Web page validation Verify web pages header meta tags for SEO",
+              "timedOut": null,
+              "duration": 4494,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('meta[name=\"description\"]') //Checks if there is an attribute called Description in Head tag\n.should(\"have.attr\", \"content\"); //Checks if there is an attribute called content in description. Expected: Failed execution.",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `meta[name=\"description\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `meta[name=\"description\"]`, but never found it.\n    at Context.eval (http://uitestingplayground.com/__cypress/tests?p=cypress/integration/rajat-test/AviyelQATask.js:111:6)",
+                "diff": null
+              },
+              "uuid": "55a67a91-65f5-467e-90d9-191a9cfb0707",
+              "parentUUID": "372b2449-6060-4aec-b4df-6c1abfd1b1e0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "92e425d6-a5d6-437c-bfa4-be4b9c0b0ca4"
+          ],
+          "failures": [
+            "55a67a91-65f5-467e-90d9-191a9cfb0707"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 24304,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "bd795ac3-01ec-494a-bd4e-776b4b8d6645",
+          "title": "API",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify the booking API",
+              "fullTitle": "API Verify the booking API",
+              "timedOut": null,
+              "duration": 1386,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('https://restful-booker.herokuapp.com/booking').then(response => {\n  expect(response.status).equal(200);\n});",
+              "err": {},
+              "uuid": "be666a85-d194-4ab3-b935-6642c4c15e94",
+              "parentUUID": "bd795ac3-01ec-494a-bd4e-776b4b8d6645",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - CREATE",
+              "fullTitle": "API validate CRUD operations - CREATE",
+              "timedOut": null,
+              "duration": 289,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://restful-booker.herokuapp.com/booking',\n  body: {\n    firstname: 'Rajat',\n    lastname: 'Devadiga',\n    totalprice: '200',\n    depositpaid: true,\n    bookingdates: {\n      checkin: \"2017-05-24\",\n      checkout: \"2019-07-30\"\n    }\n  }\n}).then(response => {\n  expect(response.status).equal(200);\n  id = response.body.bookingid;\n});",
+              "err": {},
+              "uuid": "bd3a7075-7700-40a4-b1d0-ffe2f519ed97",
+              "parentUUID": "bd795ac3-01ec-494a-bd4e-776b4b8d6645",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - READ",
+              "fullTitle": "API validate CRUD operations - READ",
+              "timedOut": null,
+              "duration": 309,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request(\"https://restful-booker.herokuapp.com/booking/\" + id).then(response => {\n  expect(response.status).equal(200);\n  expect(response.body).to.not.be.null;\n});",
+              "err": {},
+              "uuid": "bb4ae73b-1242-41b3-8625-0b8720640e22",
+              "parentUUID": "bd795ac3-01ec-494a-bd4e-776b4b8d6645",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - UPDATE",
+              "fullTitle": "API validate CRUD operations - UPDATE",
+              "timedOut": null,
+              "duration": 420,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'PUT',\n  url: \"https://restful-booker.herokuapp.com/booking/\" + id,\n  auth: {\n    username: \"admin\",\n    password: \"password123\"\n  },\n  body: {\n    \"firstname\": \"RajatTest\",\n    \"lastname\": \"Devadiga\",\n    \"totalprice\": '007',\n    \"depositpaid\": false,\n    \"bookingdates\": {\n      \"checkin\": \"2018-01-01\",\n      \"checkout\": \"2019-01-01\"\n    },\n    \"additionalneeds\": \"Breakfast\"\n  }\n}).then(response => {\n  expect(response.status).equal(200);\n  expect(response.body).to.be.not.null;\n  expect(response.body).to.have.property('firstname');\n});",
+              "err": {},
+              "uuid": "cdfe5ad5-be0b-4549-a97e-39ed18d8ebe9",
+              "parentUUID": "bd795ac3-01ec-494a-bd4e-776b4b8d6645",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate CRUD operations - DELETE",
+              "fullTitle": "API validate CRUD operations - DELETE",
+              "timedOut": null,
+              "duration": 416,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: \"https://restful-booker.herokuapp.com/booking/\" + id,\n  auth: {\n    username: \"admin\",\n    password: \"password123\"\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).equal(201);\n});",
+              "err": {},
+              "uuid": "c34d527c-7525-4332-8eef-0f0a48db5d1e",
+              "parentUUID": "bd795ac3-01ec-494a-bd4e-776b4b8d6645",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "be666a85-d194-4ab3-b935-6642c4c15e94",
+            "bd3a7075-7700-40a4-b1d0-ffe2f519ed97",
+            "bb4ae73b-1242-41b3-8625-0b8720640e22",
+            "cdfe5ad5-be0b-4549-a97e-39ed18d8ebe9",
+            "c34d527c-7525-4332-8eef-0f0a48db5d1e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2820,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": {
+        "charts": true,
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/report/mochawesome-report"
+      },
+      "version": "6.0.1"
+    }
+  }
+}
